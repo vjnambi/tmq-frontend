@@ -30,7 +30,7 @@ function Game() {
         if (filtersFromParams.playerId) {
           setPlayerId(Number(filtersFromParams.playerId));
         }
-      });
+      }, [history.location.search]);
     
       useEffect(() => {
         if(playerId > 0){
