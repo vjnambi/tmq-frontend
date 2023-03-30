@@ -30,19 +30,19 @@ function Game() {
         if (filtersFromParams.playerId) {
           setPlayerId(Number(filtersFromParams.playerId));
         }
-      }, []);
+      });
     
       useEffect(() => {
         if(playerId > 0){
             history.push(`?playerId=${playerId}`);
         }
-      }, [playerId]);
+      }, [history, playerId]);
 
     useEffect(() => {
         const sse = new EventSource(`https://thrensmusicquizapi.test.azuremicroservices.io/thrensmusicquizapi/default/subscribeGame/${gameId}`);
         sse.onmessage = e => {setGameState(JSON.parse(e.data))};
 
-    }, [])
+    })
 
     return (
         <>

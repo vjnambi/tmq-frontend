@@ -11,7 +11,7 @@ function Join({gameState, playerId, setPlayerId}) {
         setPlayerId((await axios.post(`https://thrensmusicquizapi.test.azuremicroservices.io/thrensmusicquizapi/default/addPlayer/${gameState.gameId}`, body)).data)
     }
 
-    if(gameState.status == "lobby" && playerId < 0){
+    if(gameState.status === "lobby" && playerId < 0){
         return <>
             <form method='post' onSubmit={handleSubmit}>
                 <input name='playerNameInput' type={Text}></input>
