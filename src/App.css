@@ -19,3 +19,7 @@
   gap: 1rem;
   background: rgba(211,211,211,.95);
 }
+
+.hidden{
+  display: none!important;
+}
