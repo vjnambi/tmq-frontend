@@ -9,7 +9,7 @@ function Answer({gameState, playerId}) {
         const body = {
             "payload": e.target[0].value
         }
-        await axios.post(`https://thrensmusicquizapi.test.azuremicroservices.io/thrensmusicquizapi/default/updatePlayerAnswer/${gameState.gameId}/${playerId}`, body)
+        await axios.post(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/updatePlayerAnswer/${gameState.gameId}/${playerId}`, body)
     }
 
     if(playerId > 0){

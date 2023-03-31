@@ -8,7 +8,7 @@ function Home() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setGameId((await axios.post(`https://thrensmusicquizapi.test.azuremicroservices.io/thrensmusicquizapi/default/createGame`)).data);
+        setGameId((await axios.post(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/createGame`)).data);
     }
     if(gameId < 0){
         return <>

@@ -8,7 +8,7 @@ function Join({gameState, playerId, setPlayerId}) {
         const body = {
             "payload": e.target[0].value
         }
-        setPlayerId((await axios.post(`https://thrensmusicquizapi.test.azuremicroservices.io/thrensmusicquizapi/default/addPlayer/${gameState.gameId}`, body)).data)
+        setPlayerId((await axios.post(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/addPlayer/${gameState.gameId}`, body)).data)
     }
 
     if(gameState.status === "lobby" && playerId < 0){

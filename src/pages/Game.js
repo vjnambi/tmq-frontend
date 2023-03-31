@@ -8,7 +8,7 @@ import { createBrowserHistory } from "history";
 import Question from '../components/Question';
 
 export async function loader({params}){
-    const rawData = await axios.get(`https://thrensmusicquizapi.test.azuremicroservices.io/thrensmusicquizapi/default/readGame/${params.id}`)
+    const rawData = await axios.get(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/readGame/${params.id}`)
     const gameData = rawData.data
     const gameId = params.id;
     return {gameData, gameId}
@@ -39,7 +39,7 @@ function Game() {
       }, [history, playerId]);
 
     useEffect(() => {
-        const sse = new EventSource(`https://thrensmusicquizapi.test.azuremicroservices.io/thrensmusicquizapi/default/subscribeGame/${gameId}`);
+        const sse = new EventSource(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/subscribeGame/${gameId}`);
         sse.onmessage = e => {setGameState(JSON.parse(e.data))};
 
     })
