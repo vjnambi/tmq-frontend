@@ -2,7 +2,7 @@ import React from 'react'
 
 import axios from 'axios'
 
-function Answer({gameState, playerId}) {
+function SubmitAnswer({gameState, playerId}) {
     
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -12,7 +12,7 @@ function Answer({gameState, playerId}) {
         await axios.post(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/updatePlayerAnswer/${gameState.gameId}/${playerId}`, body)
     }
 
-    if(playerId > 0){
+    if(gameState.status === "question" && playerId > 0){
         return <>
             <form method='post' onSubmit={handleSubmit}>
                 <input name='playerAnswerInput' type={Text}></input>
@@ -24,4 +24,4 @@ function Answer({gameState, playerId}) {
 
 }
 
-export default Answer
+export default SubmitAnswer

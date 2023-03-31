@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useLoaderData } from 'react-router-dom';
 import axios from 'axios';
-import Join from '../components/Join';
-import Answer from '../components/Answer';
+import JoinGame from '../components/JoinGame';
+import SubmitAnswer from '../components/SubmitAnswer';
 import qs from "qs";
 import { createBrowserHistory } from "history";
-import Question from '../components/Question';
+import DisplayQuestion from '../components/DisplayQuestion';
+import SubmitReady from '../components/SubmitReady';
+import SubmitUnready from '../components/SubmitUnready';
 
 export async function loader({params}){
     const rawData = await axios.get(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/readGame/${params.id}`)
@@ -44,7 +46,7 @@ function Game() {
     return (
         <>
             <h2>{gameState.gameName}</h2>
-            <Question gameState={gameState} />
+            <DisplayQuestion gameState={gameState} />
             <div>{gameState.timeKeeper.time}</div>
 
             {gameState.playerList.map(
@@ -60,8 +62,10 @@ function Game() {
                     }
                 }
             )}
-            <Join gameState={gameState} playerId={playerId} setPlayerId={setPlayerId}/>
-            <Answer gameState={gameState} playerId={playerId}/>
+            <JoinGame gameState={gameState} playerId={playerId} setPlayerId={setPlayerId}/>
+            <SubmitAnswer gameState={gameState} playerId={playerId}/>
+            <SubmitReady gameState={gameState} playerId={playerId} />
+            <SubmitUnready gameState={gameState} playerId={playerId} />
         </>
     )
 }
