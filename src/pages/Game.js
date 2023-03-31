@@ -28,6 +28,8 @@ function Game() {
 
     const [playerId, setPlayerId] = useState(-1)
 
+    const [sse, setSse] = useState()
+
     const history = createBrowserHistory();
 
     useEffect(() => {
@@ -42,11 +44,17 @@ function Game() {
     
 
     useEffect(() => {
-        console.log("sse connection opened");
-        const sse = new EventSource(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/subscribeGame/${gameId}`);
-        sse.onmessage = e => {setGameState(JSON.parse(e.data))};
+        if(sse){
 
-    })
+        } else {
+            console.log("sse connection opened");
+            const temp = new EventSource(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/subscribeGame/${gameId}`);
+            temp.onmessage = e => {setGameState(JSON.parse(e.data))};
+            setSse(temp)
+        }
+        
+
+    }, [sse, gameId])
 
     return (
         <div className='background'>
