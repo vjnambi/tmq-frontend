@@ -1,7 +1,6 @@
 import React from 'react'
-import JoinGame from './JoinGame'
 
-function DisplayPlayer({gameState, playerState, playerId, setPlayerId}) {
+function DisplayPlayer({gameState, playerState}) {
     if(gameState){
         if(playerState){
             if(gameState.status === "lobby"){
@@ -40,7 +39,6 @@ function DisplayPlayer({gameState, playerState, playerId, setPlayerId}) {
                     <div className='card'>
                         <div className='card-body'>
                             <h5 className='card-title'>Join the game!</h5>
-                            <JoinGame gameState={gameState} playerId={playerId} setPlayerId={setPlayerId} />
                         </div>
                     </div>
                 </div>
