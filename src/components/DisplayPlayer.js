@@ -24,7 +24,7 @@ function DisplayPlayer({gameState, playerState, playerId, setPlayerId}) {
                         </div>
                     </div>
                 </div>
-            } else if(gameState === "result"){
+            } else if(gameState.status === "result"){
                 return <div className='col-3'>
                     <div className='card'>
                         <div className='card-body'>
