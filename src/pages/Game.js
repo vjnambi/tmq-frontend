@@ -29,14 +29,11 @@ function Game() {
         const filtersFromParams = qs.parse(filterParams);
         if (filtersFromParams.playerId) {
           setPlayerId(Number(filtersFromParams.playerId));
-        }
-      }, [history.location.search]);
-    
-      useEffect(() => {
-        if(playerId > 0){
+        } else if(playerId > 0){
             history.push(`?playerId=${playerId}`);
         }
-      }, [history, playerId]);
+      }, [history.location.search,history, playerId]);
+    
 
     useEffect(() => {
         const sse = new EventSource(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/subscribeGame/${gameId}`);
