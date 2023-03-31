@@ -12,10 +12,10 @@ function SubmitAnswer({gameState, playerId}) {
         await axios.post(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/updatePlayerAnswer/${gameState.gameId}/${playerId}`, body)
     }
 
-    if(gameState.status === "question" && playerId > 0){
+    if(gameState && (gameState.status === "question" && playerId > 0)){
         return <>
             <form method='post' onSubmit={handleSubmit}>
-                <input name='playerAnswerInput' type={Text}></input>
+                <input name='playerAnswerInput'></input>
                 <button type='submit'>Answer</button>
             </form>
         </>

@@ -1,28 +1,17 @@
 import React, { useState } from 'react'
-import axios from "axios";
+import SubmitCreateGame from '../components/SubmitCreateGame';
+import SubmitGoToGame from '../components/SubmitGoToGame';
 
 
 function Home() {
 
     const [gameId, setGameId] = useState(-1);
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setGameId((await axios.post(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/createGame`)).data);
-    }
-    if(gameId < 0){
-        return <>
-            <form onSubmit={handleSubmit} method="POST">
-                <button type='submit'>Create Game</button>
-            </form>
-        </>
-    } else {
-        return <>
-            <a href={`https://thrensmusicquiz.azurewebsites.net/game/${gameId}`}>
-                <button>Go to Game</button>
-            </a>
-        </>
-    }
+    return <div className='background'>
+        <div className='main'>
+            <SubmitCreateGame gameId={gameId} setGameId={setGameId} />
+            <SubmitGoToGame gameId={gameId} />
+        </div>
+    </div>
 }
 
 export default Home

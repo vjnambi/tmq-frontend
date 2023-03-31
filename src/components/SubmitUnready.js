@@ -12,8 +12,8 @@ function SubmitUnready({gameState, playerId}) {
         await axios.post(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/updatePlayerStatus/${gameState.gameId}/${playerId}`, body)
     }
 
-    if(gameState.status === "lobby" || gameState.status === "answer"){
-        if(playerId > 0 && gameState.playerList[playerId-1].status === "ready"){
+    if(gameState && (gameState.status === "lobby" || gameState.status === "answer")){
+        if(playerId > 0 && gameState.playerList[playerId-1] && gameState.playerList[playerId-1].status === "ready"){
             return <>
                 <form method='post' onSubmit={handleSubmit}>
                     <button type='submit'>Unready</button>

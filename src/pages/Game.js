@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { useLoaderData } from 'react-router-dom';
 import axios from 'axios';
-import JoinGame from '../components/JoinGame';
 import SubmitAnswer from '../components/SubmitAnswer';
 import qs from "qs";
 import { createBrowserHistory } from "history";
 import DisplayQuestion from '../components/DisplayQuestion';
 import SubmitReady from '../components/SubmitReady';
 import SubmitUnready from '../components/SubmitUnready';
+import DisplayTitle from '../components/DisplayTitle';
+import DisplayTimer from '../components/DisplayTimer';
+import DisplayPlayers from '../components/DisplayPlayers';
+import DisplayAnswer from '../components/DisplayAnswer';
 
 export async function loader({params}){
     const rawData = await axios.get(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/readGame/${params.id}`)
@@ -44,29 +47,18 @@ function Game() {
     })
 
     return (
-        <>
-            <h2>{gameState.gameName}</h2>
+        <div className='background'>
+        <div className='main'>
+            <DisplayTitle gameState={gameState} />
             <DisplayQuestion gameState={gameState} />
-            <div>{gameState.timeKeeper.time}</div>
-
-            {gameState.playerList.map(
-                (n, i) => {
-                    if(n != null){
-                        return <>
-                            <div>Name: {n.name}</div>
-                            <div>Answer: {n.answer}</div>
-                            <div>Score: {n.score}</div>
-                        </>
-                    } else {
-                        return <></>
-                    }
-                }
-            )}
-            <JoinGame gameState={gameState} playerId={playerId} setPlayerId={setPlayerId}/>
+            <DisplayAnswer gameState={gameState} />
+            <DisplayTimer gameState={gameState} />
+            <DisplayPlayers gameState={gameState} playerId={playerId} setPlayerId={setPlayerId} />
             <SubmitAnswer gameState={gameState} playerId={playerId}/>
             <SubmitReady gameState={gameState} playerId={playerId} />
             <SubmitUnready gameState={gameState} playerId={playerId} />
-        </>
+        </div>
+        </div>
     )
 }
 

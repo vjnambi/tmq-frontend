@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from "axios";
 
-function Join({gameState, playerId, setPlayerId}) {
+function JoinGame({gameState, playerId, setPlayerId}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -11,14 +11,20 @@ function Join({gameState, playerId, setPlayerId}) {
         setPlayerId((await axios.post(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/addPlayer/${gameState.gameId}`, body)).data)
     }
 
-    if(gameState.status === "lobby" && playerId < 0){
+    if(gameState && (gameState.status === "lobby" && playerId < 0)){
         return <>
             <form method='post' onSubmit={handleSubmit}>
-                <input name='playerNameInput' type={Text}></input>
-                <button type='submit'>Join</button>
+                <div className='container'>
+                    <div className='row'>
+                        <input name='playerNameInput' placeholder='Enter your name...'></input>
+                    </div>
+                    <div className='row'>
+                        <button type='submit'>Join</button>
+                    </div>
+                </div>
             </form>
         </>
     }
 }
 
-export default Join
+export default JoinGame
