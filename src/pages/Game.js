@@ -42,6 +42,7 @@ function Game() {
     
 
     useEffect(() => {
+        console.log("sse connection opened");
         const sse = new EventSource(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/subscribeGame/${gameId}`);
         sse.onmessage = e => {setGameState(JSON.parse(e.data))};
 
