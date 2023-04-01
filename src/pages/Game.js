@@ -11,6 +11,7 @@ import DisplayTitle from '../components/DisplayTitle';
 import DisplayPlayers from '../components/DisplayPlayers';
 import DisplayAnswer from '../components/DisplayAnswer';
 import JoinGame from '../components/JoinGame';
+import SubmitAddQuestion from '../components/SubmitAddQuestion';
 
 export async function loader({params}){
     const rawData = await axios.get(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/readGame/${params.id}`)
@@ -73,7 +74,7 @@ function Game() {
                 </div>
             </div>
 
-
+            <SubmitAddQuestion gameState={gameState} playerId={playerId} />
             <JoinGame gameState={gameState} playerId={playerId} setPlayerId={setPlayerId} />
             <SubmitAnswer gameState={gameState} playerId={playerId}/>
             <SubmitReady gameState={gameState} playerId={playerId} />

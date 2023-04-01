@@ -6,17 +6,7 @@ function SubmitCreateGame({gameId, setGameId}) {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const temp = (await axios.post(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/createGame`)).data;
-        setGameId(temp);
-        const body = {
-            "payload": [
-                {
-                    "url": "dQw4w9WgXcQ",
-                    "answer": "Never Gonna Give You Up"
-                },
-            ]
-        };
-        axios.post(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/addQuestionSet/${temp}`, body)
+        setGameId((await axios.post(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/createGame`)).data);
     }
 
     if(gameId < 0){

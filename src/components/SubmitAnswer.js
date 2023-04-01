@@ -15,7 +15,7 @@ function SubmitAnswer({gameState, playerId}) {
     if(gameState && (gameState.status === "question" && playerId > 0)){
         return <>
             <form method='post' onSubmit={handleSubmit}>
-                <input name='playerAnswerInput'></input>
+                <input></input>
                 <button type='submit'>Answer</button>
             </form>
         </>
