@@ -8,7 +8,6 @@ import DisplayQuestion from '../components/DisplayQuestion';
 import SubmitReady from '../components/SubmitReady';
 import SubmitUnready from '../components/SubmitUnready';
 import DisplayTitle from '../components/DisplayTitle';
-import DisplayTimer from '../components/DisplayTimer';
 import DisplayPlayers from '../components/DisplayPlayers';
 import DisplayAnswer from '../components/DisplayAnswer';
 import JoinGame from '../components/JoinGame';
