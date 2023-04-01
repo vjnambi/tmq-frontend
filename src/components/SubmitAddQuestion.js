@@ -17,7 +17,7 @@ function SubmitAddQuestion({gameState, playerId}) {
             ]
         }
         console.log(body)
-        await axios.post(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/addQuestion/${gameState.gameId}/`, body)
+        await axios.post(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/addQuestionSet/${gameState.gameId}/`, body)
     }
 
     if(gameState && (gameState.status === "lobby" && playerId > 0)){
