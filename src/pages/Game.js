@@ -60,10 +60,21 @@ function Game() {
         <div className='background'>
         <div className='main'>
             <DisplayTitle gameState={gameState} />
-            <DisplayQuestion gameState={gameState} />
-            <DisplayAnswer gameState={gameState} />
-            <DisplayTimer gameState={gameState} />
-            <DisplayPlayers gameState={gameState} />
+            <div className='container'>
+                <div className='row'>
+                    <div className='col-7'>
+                        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                            <DisplayQuestion gameState={gameState} />
+                            <DisplayAnswer gameState={gameState} />
+                        </div>
+                    </div>
+                    <div className='col-5'>
+                        <DisplayPlayers gameState={gameState} />
+                    </div>
+                </div>
+            </div>
+
+
             <JoinGame gameState={gameState} playerId={playerId} setPlayerId={setPlayerId} />
             <SubmitAnswer gameState={gameState} playerId={playerId}/>
             <SubmitReady gameState={gameState} playerId={playerId} />

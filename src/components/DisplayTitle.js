@@ -2,7 +2,7 @@ import React from 'react'
 
 function DisplayTitle({gameState}) {
     if(gameState){
-        return <h2>{gameState.gameName}</h2>
+        return <h4>{gameState.gameName}</h4>
     }
 }
 
