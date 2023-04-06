@@ -12,9 +12,10 @@ import DisplayPlayers from '../components/DisplayPlayers';
 import DisplayAnswer from '../components/DisplayAnswer';
 import JoinGame from '../components/JoinGame';
 import SubmitAddQuestion from '../components/SubmitAddQuestion';
+import BEDomain from '../lib/BEDomain';
 
 export async function loader({params}){
-    const rawData = await axios.get(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/readGame/${params.id}`)
+    const rawData = await axios.get(`${BEDomain}/readGame/${params.id}`)
     const gameData = rawData.data
     const gameId = params.id;
     return {gameData, gameId}
@@ -48,7 +49,7 @@ function Game() {
 
         } else {
             console.log("sse connection opened");
-            const temp = new EventSource(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/subscribeGame/${gameId}`);
+            const temp = new EventSource(`${BEDomain}/subscribeGame/${gameId}`);
             temp.onmessage = e => {setGameState(JSON.parse(e.data))};
             setSse(temp)
         }

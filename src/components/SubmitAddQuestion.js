@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import axios from 'axios';
+import BEDomain from '../lib/BEDomain';
 
 function SubmitAddQuestion({gameState, playerId}) {
+
+    const [formEntry1, setFormEntry1] = useState("")
+    const [formEntry2, setFormEntry2] = useState("")
+
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         var videoId = "";
@@ -16,15 +22,16 @@ function SubmitAddQuestion({gameState, playerId}) {
                 }
             ]
         }
-        console.log(body)
-        await axios.post(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/addQuestionSet/${gameState.gameId}`, body)
+        setFormEntry1("")
+        setFormEntry2("")
+        await axios.post(`${BEDomain}/addQuestionSet/${gameState.gameId}`, body)
     }
 
     if(gameState && (gameState.status === "lobby" && playerId > 0)){
         return <>
             <form method='post' onSubmit={handleSubmit}>
-                <input placeholder='Enter youtube url'></input>
-                <input placeholder='Enter correct answer'></input>
+                <input placeholder='Enter youtube url' autoComplete='off' value={formEntry1} onChange={e => setFormEntry1(e.target.value)}></input>
+                <input placeholder='Enter correct answer' autoComplete='off' value={formEntry2} onChange={e => setFormEntry2(e.target.value)}></input>
                 <button type='submit'>Add Question</button>
             </form>
         </>

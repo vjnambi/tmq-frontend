@@ -5,6 +5,7 @@ import SubmitGoToGame from '../components/SubmitGoToGame';
 
 function Home() {
 
+
     const [gameId, setGameId] = useState(-1);
     return <div className='background'>
         <div className='main'>

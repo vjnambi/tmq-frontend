@@ -1,12 +1,13 @@
 import React from 'react'
 
 import axios from 'axios'
+import BEDomain from '../lib/BEDomain';
 
 function SubmitCreateGame({gameId, setGameId}) {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setGameId((await axios.post(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/createGame`)).data);
+        setGameId((await axios.post(`${BEDomain}/createGame`)).data);
     }
 
     if(gameId < 0){

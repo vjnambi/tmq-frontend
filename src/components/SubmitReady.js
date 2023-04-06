@@ -1,6 +1,7 @@
 import React from 'react'
 
 import axios from 'axios'
+import BEDomain from '../lib/BEDomain'
 
 function SubmitReady({gameState, playerId}) {
     
@@ -9,7 +10,7 @@ function SubmitReady({gameState, playerId}) {
         const body = {
             "payload": "ready"
         }
-        await axios.post(`https://thrensmusicquizapi-thrensmusicquizapi.azuremicroservices.io/updatePlayerStatus/${gameState.gameId}/${playerId}`, body)
+        await axios.post(`${BEDomain}/updatePlayerStatus/${gameState.gameId}/${playerId}`, body)
     }
 
     if(gameState && (gameState.status === "lobby" || gameState.status === "answer")){

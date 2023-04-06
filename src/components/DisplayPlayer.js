@@ -16,7 +16,7 @@ function DisplayPlayer({gameState, playerState}) {
                 return <div className='col-12'>
                     <div className='card'>
                         <div className='card-body'>
-                            <h5 className='card-title'>{playerState.name}</h5>
+                            <h5 className='card-title' style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}><div>{playerState.name}</div><div>{playerState.score}</div></h5>
                             <div className='card-text'>Answer: {gameState.status === "question" ? "???" : playerState.answer}</div>
                         </div>
                     </div>
