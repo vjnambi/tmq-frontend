@@ -4,7 +4,7 @@ import axios from 'axios';
 import SubmitAnswer from '../components/SubmitAnswer';
 import qs from "qs";
 import { createBrowserHistory } from "history";
-import DisplayQuestion from '../components/DisplayQuestion';
+import DisplayVideo from '../components/DisplayVideo';
 import SubmitReady from '../components/SubmitReady';
 import SubmitUnready from '../components/SubmitUnready';
 import DisplayTitle from '../components/DisplayTitle';
@@ -65,7 +65,7 @@ function Game() {
                 <div className='row'>
                     <div className='col-7'>
                         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                            <DisplayQuestion gameState={gameState} />
+                            <DisplayVideo gameState={gameState} />
                             <DisplayAnswer gameState={gameState} />
                         </div>
                     </div>

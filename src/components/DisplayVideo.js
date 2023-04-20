@@ -1,7 +1,7 @@
 import React from 'react'
 import DisplayTimer from './DisplayTimer'
 
-function DisplayQuestion({gameState}) {
+function DisplayVideo({gameState}) {
   if(gameState && (gameState.status === "question")){
     const embedUrl = `https://www.youtube.com/embed/${gameState.currentQuestion.url}?autoplay=1`
     return <>
@@ -26,4 +26,4 @@ function DisplayQuestion({gameState}) {
   }
 }
 
-export default DisplayQuestion
+export default DisplayVideo

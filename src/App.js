@@ -5,6 +5,13 @@ import Home from './pages/Home';
 
 import Game from './pages/Game';
 import { loader as gameLoader } from './pages/Game';
+import ApplePay from './pages/ApplePay';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import {loader as qsLoader} from './pages/QuestionSets';
+import QuestionSets from './pages/QuestionSets';
+import {loader as qLoader} from './pages/Questions';
+import Questions from './pages/Questions'
 
 function App() {
 
@@ -17,6 +24,28 @@ function App() {
     {
       path: '/',
       element: <Home />,
+    },
+    {
+      path: '/apple',
+      element: <ApplePay />
+    },
+    {
+      path: '/register',
+      element: <Register />
+    },
+    {
+      path: '/login',
+      element: <Login />
+    },
+    {
+      path: '/questionsets',
+      element: <QuestionSets />,
+      loader: qsLoader
+    },
+    {
+      path: '/questions/:qsId',
+      element: <Questions />,
+      loader: qLoader
     },
   ])
 
