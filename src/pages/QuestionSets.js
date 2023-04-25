@@ -6,7 +6,13 @@ import SubmitCreateQuestionSet from '../components/SubmitCreateQuestionSet'
 import DisplayQuestionSets from '../components/DisplayQuestionSets'
 
 export async function loader(){
-    var QSData = JSON.parse((await axios.get(`${BE2Domain}/viewQuestionSets`, {headers: {accessToken: sessionStorage.getItem("accessToken")}})).data)
+    var QSData;
+    if(sessionStorage.getItem("accessToken")){
+        QSData = JSON.parse((await axios.get(`${BE2Domain}/viewQuestionSets`, {headers: {accessToken: sessionStorage.getItem("accessToken")}})).data)
+    } else {
+        QSData = null
+    }
+    
     return {QSData}
 }
 
@@ -16,7 +22,11 @@ function QuestionSets() {
 
     const [QSState, setQSState] = useState(QSData)
 
-    if(QSState.error){
+    if(!QSState){
+        return  <>
+            <div>Not logged in</div>
+        </>
+    }else if(QSState.error){
         return <>
             <div>{QSState.error.toString()}</div>
         </>
