@@ -8,7 +8,7 @@ function Home() {
 
     const [gameId, setGameId] = useState(-1);
     return <div className='background'>
-        <div className='main'>
+        <div className='container-lg main'>
             <SubmitCreateGame gameId={gameId} setGameId={setGameId} />
             <SubmitGoToGame gameId={gameId} />
         </div>

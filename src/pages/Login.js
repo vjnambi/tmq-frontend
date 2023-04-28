@@ -9,6 +9,7 @@ export default function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        console.log(e.target[0].value)
         const body = {
             "username": e.target[0].value,
             "password": e.target[1].value
@@ -16,21 +17,24 @@ export default function Login() {
 
         axios.post(`${BE2Domain}/login`, body).then((response) => {
             if(response.data.error){
-                alert(response.data.error)
+                setText(response.data.error)
             } else {
                 sessionStorage.setItem("accessToken",response.data)
+                setText("Successfully logged in")
             }
-        }).then(() => {
-            setText(sessionStorage.getItem("accessToken"))
         })
     }
 
     return <>
+                <div className='background'>
+                <div className='container-lg main'>
         <form method='post' onSubmit={handleSubmit}>
             <input placeholder='Enter username' autoComplete='off'></input>
             <input placeholder='Enter password' autoComplete='off' type='password'></input>
             <button type='submit'>Log in</button>
         </form>
         <div>{text}</div>
+        </div>
+        </div>
     </>
 }

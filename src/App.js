@@ -12,6 +12,7 @@ import {loader as qsLoader} from './pages/QuestionSets';
 import QuestionSets from './pages/QuestionSets';
 import {loader as qLoader} from './pages/Questions';
 import Questions from './pages/Questions'
+import Search from './pages/Search';
 
 function App() {
 
@@ -47,6 +48,10 @@ function App() {
       element: <Questions />,
       loader: qLoader
     },
+    {
+      path: '/search',
+      element: <Search />
+    }
   ])
 
   return (

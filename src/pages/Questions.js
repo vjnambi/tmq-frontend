@@ -23,8 +23,12 @@ function Questions() {
         </>
     } else {
         return <>
-            <DisplayQuestions QState={QState} setQState={setQState}/>
-            <SubmitCreateQuestion setQState={setQState} qsId={QState.id} />
+            <div className='background'>
+                <div className='container-lg main'>
+                    <DisplayQuestions QState={QState} setQState={setQState}/>
+                    <SubmitCreateQuestion setQState={setQState} qsId={QState.id} />
+                </div>
+            </div>
         </>
     }
 }

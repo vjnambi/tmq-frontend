@@ -32,8 +32,12 @@ function QuestionSets() {
         </>
     } else {
         return <>
-            <DisplayQuestionSets QSState={QSState} setQSState={setQSState} />
-            <SubmitCreateQuestionSet setQSState={setQSState} />
+            <div className='background'>
+                <div className='container-lg main'>
+                    <DisplayQuestionSets QSState={QSState} setQSState={setQSState} />
+                    <SubmitCreateQuestionSet setQSState={setQSState} />
+                </div>
+            </div>
         </>
     }
 }
