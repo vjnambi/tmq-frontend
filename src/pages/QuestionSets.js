@@ -8,7 +8,7 @@ import DisplayQuestionSets from '../components/DisplayQuestionSets'
 export async function loader(){
     var QSData;
     if(sessionStorage.getItem("accessToken")){
-        QSData = JSON.parse((await axios.get(`${BE2Domain}/viewQuestionSets`)).data)
+        QSData = JSON.parse((await axios.get(`${BE2Domain}/viewQuestionSets`, {headers: {accessToken: sessionStorage.getItem("accessToken")}})).data)
     } else {
         QSData = null
     }
