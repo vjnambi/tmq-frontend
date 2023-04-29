@@ -8,7 +8,7 @@ import DisplayQuestionSets from '../components/DisplayQuestionSets'
 export async function loader(){
     var QSData;
     if(sessionStorage.getItem("accessToken")){
-        QSData = JSON.parse((await axios.get(`${BE2Domain}/viewQuestionSets`, {headers: {accessToken: sessionStorage.getItem("accessToken")}})).data)
+        QSData = JSON.parse((await axios.get(`${BE2Domain}/viewQuestionSets`)).data)
     } else {
         QSData = null
     }
@@ -33,7 +33,7 @@ function QuestionSets() {
     } else {
         return <>
             <div className='background'>
-                <div className='container-lg main'>
+                <div className='main'>
                     <DisplayQuestionSets QSState={QSState} setQSState={setQSState} />
                     <SubmitCreateQuestionSet setQSState={setQSState} />
                 </div>

@@ -20,7 +20,7 @@ export default function Search() {
 
     return <>
                 <div className='background'>
-                <div className='container-lg main'>
+                <div className='main'>
         <form method='post' onSubmit={handleSubmit}>
             <input placeholder='Enter query' autoComplete='off'></input>
             <button type='submit'>Search</button>

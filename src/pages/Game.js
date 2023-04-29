@@ -13,6 +13,7 @@ import DisplayAnswer from '../components/DisplayAnswer';
 import JoinGame from '../components/JoinGame';
 import SubmitAddQuestion from '../components/SubmitAddQuestion';
 import BEDomain from '../lib/BEDomain';
+import Search from '../components/Search';
 
 export async function loader({params}){
     const rawData = await axios.get(`${BEDomain}/readGame/${params.id}`)
@@ -80,6 +81,7 @@ function Game() {
             <SubmitAnswer gameState={gameState} playerId={playerId}/>
             <SubmitReady gameState={gameState} playerId={playerId} />
             <SubmitUnready gameState={gameState} playerId={playerId} />
+            <Search gameState={gameState} playerId={playerId} />
         </div>
         </div>
     )

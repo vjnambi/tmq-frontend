@@ -6,7 +6,7 @@ import DisplayQuestions from '../components/DisplayQuestions'
 import SubmitCreateQuestion from '../components/SubmitCreateQuestion'
 
 export async function loader({params}){
-    var QData = JSON.parse((await axios.get(`${BE2Domain}/viewQuestions/${params.qsId}`, {headers: {accessToken: sessionStorage.getItem("accessToken")}})).data)
+    var QData = JSON.parse((await axios.get(`${BE2Domain}/viewQuestions/${params.qsId}`)).data)
     console.log(QData)
     return {QData}
 }
@@ -24,7 +24,7 @@ function Questions() {
     } else {
         return <>
             <div className='background'>
-                <div className='container-lg main'>
+                <div className='main'>
                     <DisplayQuestions QState={QState} setQState={setQState}/>
                     <SubmitCreateQuestion setQState={setQState} qsId={QState.id} />
                 </div>

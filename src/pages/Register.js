@@ -18,7 +18,7 @@ export default function Register() {
 
     return <>
                 <div className='background'>
-                <div className='container-lg main'>
+                <div className='main'>
         <form method='post' onSubmit={handleSubmit}>
             <input placeholder='Enter username' autoComplete='off'></input>
             <input placeholder='Enter password' autoComplete='off' type='password'></input>
