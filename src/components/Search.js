@@ -31,21 +31,23 @@ function Search({gameState, playerId}) {
     }
 
     if(gameState && (gameState.status === "lobby" && playerId > 0)){
-        return <>
-            <form method='post' onSubmit={handleSubmit}>
+        return <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <div>
+                Search and add a playlist
+            </div>
+            <form style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}} method='post' onSubmit={handleSubmit}>
                 <input placeholder='Enter query' autoComplete='off'></input>
                 <button type='submit'>Search</button>
             </form>
-            <div>{typeof results === 'string' ? results : results.map((n,i) => {
-                return <div key={i}>
-                    <div>id: {n.id}</div>
+            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>{typeof results === 'string' ? results : results.map((n,i) => {
+                return <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}} key={i}>
                     <div>name: {n.name}</div>
                     <form method='post' onSubmit={handleSubmit2}>
                         <button id={n.id} type='submit'>Add Question Set</button>
                     </form>
                 </div>})}
             </div>
-        </>
+        </div>
     }
 }
 

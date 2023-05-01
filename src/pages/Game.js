@@ -75,13 +75,14 @@ function Game() {
                     </div>
                 </div>
             </div>
-
+            <div style={{width: '100%', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly'}}>
             <SubmitAddQuestion gameState={gameState} playerId={playerId} />
+            <Search gameState={gameState} playerId={playerId} />
+            </div>
             <JoinGame gameState={gameState} playerId={playerId} setPlayerId={setPlayerId} />
             <SubmitAnswer gameState={gameState} playerId={playerId}/>
             <SubmitReady gameState={gameState} playerId={playerId} />
             <SubmitUnready gameState={gameState} playerId={playerId} />
-            <Search gameState={gameState} playerId={playerId} />
         </div>
         </div>
     )

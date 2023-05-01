@@ -16,6 +16,12 @@ function SubmitCreateGame({gameId, setGameId}) {
                 <button type='submit'>Create Game</button>
             </form>
         </>
+    } else {
+        return <>
+            <form>
+                <button disabled>Create Game</button>
+            </form>
+        </>
     }
 
     

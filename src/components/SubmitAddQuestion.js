@@ -28,13 +28,16 @@ function SubmitAddQuestion({gameState, playerId}) {
     }
 
     if(gameState && (gameState.status === "lobby" && playerId > 0)){
-        return <>
-            <form method='post' onSubmit={handleSubmit}>
+        return <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <div>
+                Add a song
+            </div>
+            <form style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}} method='post' onSubmit={handleSubmit}>
                 <input placeholder='Enter youtube url' autoComplete='off' value={formEntry1} onChange={e => setFormEntry1(e.target.value)}></input>
                 <input placeholder='Enter correct answer' autoComplete='off' value={formEntry2} onChange={e => setFormEntry2(e.target.value)}></input>
                 <button type='submit'>Add Question</button>
             </form>
-        </>
+        </div>
     }
 }
 
