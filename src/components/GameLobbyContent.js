@@ -8,7 +8,7 @@ import GameLobbyView0Button from './GameLobbyView0Button';
 import GameLobbyAddQuestion from './GameLobbyAddQuestion';
 import GameLobbySearch from './GameLobbySearch';
 
-function GameLobbyContent({gameState, playerId, setPlayerId}) {
+function GameLobbyContent({gameState, setGameState, playerId, setPlayerId}) {
 
     const [lobbyView, setLobbyView] = useState(0)
 
@@ -17,14 +17,19 @@ function GameLobbyContent({gameState, playerId, setPlayerId}) {
     if(lobbyView === 0){
         if(playerId < 0){
             if(!gameState.playerList[3]){
-                controls = <GameLobbyJoinGameButton gameState={gameState} setPlayerId={setPlayerId} />
+                controls = <GameLobbyJoinGameButton gameState={gameState} setGameState={setGameState} setPlayerId={setPlayerId} />
             }
         } else {
             if(gameState.playerList[playerId-1].status === 'unready'){
-                controls = <>
-                    <GameLobbyView1Button setLobbyView={setLobbyView} />
-                    <GameLobbyReadyButton gameState={gameState} playerId={playerId} />
-                </>
+                if(gameState.questionPool.length === 0){
+                    controls = <GameLobbyView1Button setLobbyView={setLobbyView} />
+                } else {
+                    controls = <>
+                        <GameLobbyView1Button setLobbyView={setLobbyView} />
+                        <GameLobbyReadyButton gameState={gameState} playerId={playerId} />
+                    </>
+                }
+                
             } else {
                 controls = <GameLobbyUnreadyButton gameState={gameState} playerId={playerId} />
             }

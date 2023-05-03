@@ -19,6 +19,7 @@ function GameAnswerContent({gameState, playerId}) {
 			<GameAnswerVideo gameState={gameState} />
 			<GameAnswerPlayerContainer gameState={gameState} />
 		</div>
+		<div>{gameState.currentQuestion.answer}</div>
 		{controls}
 	</>
 }
