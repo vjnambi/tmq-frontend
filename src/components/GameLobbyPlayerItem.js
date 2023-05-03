@@ -7,7 +7,7 @@ function GameLobbyPlayerItem({playerState}) {
         return <div className='card' style={{width: '25rem', height: '5rem'}}>
                 <div className='card-body'>
                     <div className='hflex' style={{justifyContent: 'space-between', alignItems: 'center', width: '100%', height: '100%'}}>
-                        <img style={{height: '3rem', paddingRight: '1rem'}} src={logo} />
+                        <img style={{height: '3rem', paddingRight: '1rem'}} src={logo} alt='icon' />
                         <div style={{flexGrow: 1, textAlign: 'left', paddingRight: '1rem'}}>{playerState.name}</div>
                         <div style={{flexGrow: 1, textAlign: 'right'}}>{playerState.status}</div>
                     </div>

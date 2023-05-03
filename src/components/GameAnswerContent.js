@@ -1,7 +1,4 @@
 import React from 'react'
-import GameQuestionTimer from './GameQuestionTimer'
-import GameQuestionPlayerContainer from './GameQuestionPlayerContainer'
-import GameQuestionAnswerButton from './GameQuestionAnswerButton'
 import GameAnswerVideo from './GameAnswerVideo'
 import GameAnswerPlayerContainer from './GameAnswerPlayerContainer'
 import GameAnswerReadyButton from './GameAnswerReadyButton'
@@ -13,7 +10,7 @@ function GameAnswerContent({gameState, playerId}) {
 		if(gameState.playerList[playerId-1].status === 'unready'){
 			controls = <GameAnswerReadyButton gameState={gameState} playerId={playerId} />
 		} else {
-			
+
 		}
 	}
 
