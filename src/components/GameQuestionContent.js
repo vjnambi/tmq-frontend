@@ -9,6 +9,7 @@ function GameQuestionContent({gameState, playerId}) {
 		controls = <GameQuestionAnswerButton gameState={gameState} playerId={playerId} />
 	}
     return <>
+		<div>Question {gameState.currentQuestionNum}</div>
 		<div className='hflex' style={{alignSelf: 'stretch', alignItems: 'stretch', gap: '0.2vw'}}>
 			<GameQuestionTimer gameState={gameState} />
 			<GameQuestionPlayerContainer gameState={gameState} />

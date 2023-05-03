@@ -15,6 +15,7 @@ function GameAnswerContent({gameState, playerId}) {
 	}
 
 	return <>
+		<div>Question {gameState.currentQuestionNum}</div>
 		<div className='hflex' style={{alignSelf: 'stretch', alignItems: 'stretch', gap: '0.2vw'}}>
 			<GameAnswerVideo gameState={gameState} />
 			<GameAnswerPlayerContainer gameState={gameState} />
