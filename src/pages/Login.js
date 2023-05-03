@@ -9,7 +9,6 @@ export default function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(e.target[0].value)
         const body = {
             "username": e.target[0].value,
             "password": e.target[1].value

@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useLoaderData } from 'react-router-dom';
 import axios from 'axios';
-import SubmitAnswer from '../components/SubmitAnswer';
 import qs from "qs";
 import { createBrowserHistory } from "history";
-import DisplayVideo from '../components/DisplayVideo';
-import SubmitReady from '../components/SubmitReady';
-import SubmitUnready from '../components/SubmitUnready';
-import DisplayTitle from '../components/DisplayTitle';
-import DisplayPlayers from '../components/DisplayPlayers';
-import DisplayAnswer from '../components/DisplayAnswer';
-import JoinGame from '../components/JoinGame';
-import SubmitAddQuestion from '../components/SubmitAddQuestion';
 import BEDomain from '../lib/BEDomain';
-import Search from '../components/Search';
+import GameLobbyContent from '../components/GameLobbyContent';
+import GameQuestionContent from '../components/GameQuestionContent';
+import GameAnswerContent from '../components/GameAnswerContent';
+import GameResultContent from '../components/GameResultContent';
 
 export async function loader({params}){
     const rawData = await axios.get(`${BEDomain}/readGame/${params.id}`)
@@ -58,34 +52,30 @@ function Game() {
 
     }, [sse, gameId])
 
-    return (
-        <div className='background'>
+    let content;
+    switch(gameState.status){
+        case "lobby":
+            content = <GameLobbyContent gameState={gameState} setGameState={setGameState} playerId={playerId} setPlayerId={setPlayerId}/>
+            break;
+        case "question":
+            content =  <GameQuestionContent gameState={gameState} playerId={playerId} />
+            break;
+        case "answer":
+            content = <GameAnswerContent gameState={gameState} playerId={playerId}/>
+            break;
+        case "result":
+            content = <GameResultContent gameState={gameState} playerId={playerId} />
+            break;
+        default:
+            content = <div>Game state unknown</div>
+            break;
+      }
+    
+    return <div className='background'>
         <div className='main'>
-            <DisplayTitle gameState={gameState} />
-            <div className='container'>
-                <div className='row'>
-                    <div className='col-7'>
-                        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                            <DisplayVideo gameState={gameState} />
-                            <DisplayAnswer gameState={gameState} />
-                        </div>
-                    </div>
-                    <div className='col-5'>
-                        <DisplayPlayers gameState={gameState} />
-                    </div>
-                </div>
-            </div>
-            <div style={{width: '100%', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly'}}>
-            <SubmitAddQuestion gameState={gameState} playerId={playerId} />
-            <Search gameState={gameState} playerId={playerId} />
-            </div>
-            <JoinGame gameState={gameState} playerId={playerId} setPlayerId={setPlayerId} />
-            <SubmitAnswer gameState={gameState} playerId={playerId}/>
-            <SubmitReady gameState={gameState} playerId={playerId} />
-            <SubmitUnready gameState={gameState} playerId={playerId} />
+            {content}                
         </div>
         </div>
-    )
 }
 
 export default Game

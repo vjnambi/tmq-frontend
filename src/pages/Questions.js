@@ -7,7 +7,6 @@ import SubmitCreateQuestion from '../components/SubmitCreateQuestion'
 
 export async function loader({params}){
     var QData = JSON.parse((await axios.get(`${BE2Domain}/viewQuestions/${params.qsId}`, {headers: {accessToken: sessionStorage.getItem("accessToken")}})).data)
-    console.log(QData)
     return {QData}
 }
 
