@@ -7,10 +7,13 @@ function GameLobbyAddQuestion({gameState, playerId}) {
 
     const [formEntry1, setFormEntry1] = useState("")
     const [formEntry2, setFormEntry2] = useState("")
+    const [added, setAdded] = useState([])
+
 
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setAdded(arr => [...arr, e.target[1].value])
         var videoId = "";
         videoId = e.target[0].value;
         videoId = videoId.match("v=(.)*")[0].substring(2)
@@ -38,6 +41,12 @@ function GameLobbyAddQuestion({gameState, playerId}) {
                     <input placeholder='Enter correct answer' autoComplete='off' value={formEntry2} onChange={e => setFormEntry2(e.target.value)}></input>
                     <button type='submit'>Add Question</button>
                 </form>
+                <div className='vflex' style={{gap: '0.5rem'}}>{added.map((n,i) => {
+                    return <div className='hflex' style={{justifyContent: 'space-between', alignItems: 'center', alignSelf: 'stretch'}} key={i}>
+                        <div>{n}</div>
+                        <div>Added!</div>
+                    </div>})}
+                </div>
             </div>
         </div>
     </div>
