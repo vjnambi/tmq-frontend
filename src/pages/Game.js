@@ -8,6 +8,8 @@ import GameLobbyContent from '../components/GameLobbyContent';
 import GameQuestionContent from '../components/GameQuestionContent';
 import GameAnswerContent from '../components/GameAnswerContent';
 import GameResultContent from '../components/GameResultContent';
+import SockJS from 'sockjs-client';
+import Stomp from 'stompjs'
 
 export async function loader({params}){
     const rawData = await axios.get(`${BEDomain}/readGame/${params.id}`)
@@ -24,7 +26,7 @@ function Game() {
 
     const [playerId, setPlayerId] = useState(-1)
 
-    const [sse, setSse] = useState()
+    const [stompClient, setStompClient] = useState()
 
     const history = createBrowserHistory();
 
@@ -40,17 +42,23 @@ function Game() {
     
 
     useEffect(() => {
-        if(sse){
+        if(stompClient){
 
         } else {
-            console.log("sse connection opened");
-            const temp = new EventSource(`${BEDomain}/subscribeGame/${gameId}`);
-            temp.onmessage = e => {setGameState(JSON.parse(e.data))};
-            setSse(temp)
+            var socket = new SockJS(`${BEDomain}/gs-guide-websocket`);
+            var temp = Stomp.over(socket);
+            console.log(temp)
+            temp.connect({}, function (frame) {
+                console.log('Connected: ' + frame);
+                temp.subscribe(`/topic/game/${gameId}`, function (gameState) {
+                    setGameState(JSON.parse(gameState.body));
+                });
+            });
+            setStompClient(temp);
         }
         
 
-    }, [sse, gameId])
+    }, [stompClient, gameId])
 
     let content;
     switch(gameState.status){
