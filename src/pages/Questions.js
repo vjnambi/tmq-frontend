@@ -4,6 +4,7 @@ import BE2Domain from '../lib/BE2Domain'
 import { useLoaderData } from 'react-router-dom'
 import DisplayQuestions from '../components/DisplayQuestions'
 import SubmitCreateQuestion from '../components/SubmitCreateQuestion'
+import GlobalNavBar from '../components/GlobalNavBar'
 
 export async function loader({params}){
     var QData = JSON.parse((await axios.get(`${BE2Domain}/viewQuestions/${params.qsId}`, {headers: {accessToken: sessionStorage.getItem("accessToken")}})).data)
@@ -23,6 +24,7 @@ function Questions() {
     } else {
         return <>
             <div className='background'>
+            <GlobalNavBar />
                 <div className='main'>
                     <DisplayQuestions QState={QState} setQState={setQState}/>
                     <SubmitCreateQuestion setQState={setQState} qsId={QState.id} />

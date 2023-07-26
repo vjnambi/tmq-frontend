@@ -4,6 +4,7 @@ import BE2Domain from '../lib/BE2Domain'
 import { useLoaderData } from 'react-router-dom'
 import SubmitCreateQuestionSet from '../components/SubmitCreateQuestionSet'
 import DisplayQuestionSets from '../components/DisplayQuestionSets'
+import GlobalNavBar from '../components/GlobalNavBar'
 
 export async function loader(){
     var QSData;
@@ -33,6 +34,7 @@ function QuestionSets() {
     } else {
         return <>
             <div className='background'>
+            <GlobalNavBar />
                 <div className='main'>
                     <DisplayQuestionSets QSState={QSState} setQSState={setQSState} />
                     <SubmitCreateQuestionSet setQSState={setQSState} />

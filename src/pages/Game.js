@@ -9,7 +9,8 @@ import GameQuestionContent from '../components/GameQuestionContent';
 import GameAnswerContent from '../components/GameAnswerContent';
 import GameResultContent from '../components/GameResultContent';
 import SockJS from 'sockjs-client';
-import Stomp from 'stompjs'
+import Stomp from 'stompjs';
+import GlobalNavBar from '../components/GlobalNavBar';
 
 export async function loader({params}){
     const rawData = await axios.get(`${BEDomain}/readGame/${params.id}`)
@@ -80,6 +81,7 @@ function Game() {
       }
     
     return <div className='background'>
+        <GlobalNavBar />
         <div className='main'>
             {content}                
         </div>

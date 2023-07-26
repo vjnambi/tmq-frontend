@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import BE2Domain from '../lib/BE2Domain'
 import axios from 'axios'
+import GlobalNavBar from '../components/GlobalNavBar'
 
 export default function Register() {
 
@@ -18,6 +19,7 @@ export default function Register() {
 
     return <>
                 <div className='background'>
+                <GlobalNavBar />
                 <div className='main'>
         <form method='post' onSubmit={handleSubmit}>
             <input placeholder='Enter username' autoComplete='off'></input>
