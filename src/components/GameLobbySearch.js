@@ -5,7 +5,7 @@ import BE2Domain from '../lib/BE2Domain'
 import BEDomain from '../lib/BEDomain';
 
 
-function GameLobbySearch({gameState, playerId}) {
+function GameLobbySearch({gameState, playerId, stompClient}) {
     const [results, setResults] = useState("")
     const [selected, setSelected] = useState([])
 
@@ -27,7 +27,7 @@ function GameLobbySearch({gameState, playerId}) {
         const body = {
             "payload": QData.questions
         }
-        await axios.post(`${BEDomain}/addQuestionSet/${gameState.gameId}`, body)
+        stompClient.send(`/app/addQuestionSet/${gameState.gameId}`,{},JSON.stringify(body))
     }
 
     return <div className='card' style={{flexGrow: 1}}>

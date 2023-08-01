@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import BEDomain from '../lib/BEDomain';
 
-function GameLobbyAddQuestion({gameState, playerId}) {
+function GameLobbyAddQuestion({gameState, playerId, stompClient}) {
 
     const [formEntry1, setFormEntry1] = useState("")
     const [formEntry2, setFormEntry2] = useState("")
@@ -27,7 +27,7 @@ function GameLobbyAddQuestion({gameState, playerId}) {
         }
         setFormEntry1("")
         setFormEntry2("")
-        await axios.post(`${BEDomain}/addQuestionSet/${gameState.gameId}`, body)
+        stompClient.send(`/app/addQuestionSet/${gameState.gameId}`,{},JSON.stringify(body))
     }
 
     return <div className='card' style={{flexGrow: 1, marginRight: '0.5rem'}}>

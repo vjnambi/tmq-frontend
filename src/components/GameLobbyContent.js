@@ -45,7 +45,7 @@ function GameLobbyContent({gameState, setGameState, playerId, setPlayerId, stomp
     } else {
         return <>
             <div className='hflex' style={{justifyContent: 'space-evenly', alignSelf: 'stretch'}}>
-                <GameLobbyAddQuestion gameState={gameState} playerId={playerId} />
+                <GameLobbyAddQuestion gameState={gameState} playerId={playerId} stompClient={stompClient} />
                 <GameLobbySearch gameState={gameState} playerId={playerId} />
             </div>
             <GameLobbyView0Button setLobbyView={setLobbyView} />
