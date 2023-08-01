@@ -8,7 +8,7 @@ import GameLobbyView0Button from './GameLobbyView0Button';
 import GameLobbyAddQuestion from './GameLobbyAddQuestion';
 import GameLobbySearch from './GameLobbySearch';
 
-function GameLobbyContent({gameState, setGameState, playerId, setPlayerId}) {
+function GameLobbyContent({gameState, setGameState, playerId, setPlayerId, stompClient}) {
 
     const [lobbyView, setLobbyView] = useState(0)
 
@@ -26,12 +26,12 @@ function GameLobbyContent({gameState, setGameState, playerId, setPlayerId}) {
                 } else {
                     controls = <>
                         <GameLobbyView1Button setLobbyView={setLobbyView} />
-                        <GameLobbyReadyButton gameState={gameState} playerId={playerId} />
+                        <GameLobbyReadyButton gameState={gameState} playerId={playerId} stompClient={stompClient} />
                     </>
                 }
                 
             } else {
-                controls = <GameLobbyUnreadyButton gameState={gameState} playerId={playerId} />
+                controls = <GameLobbyUnreadyButton gameState={gameState} playerId={playerId} stompClient={stompClient} />
             }
             
         }

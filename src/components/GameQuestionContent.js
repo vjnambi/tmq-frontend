@@ -3,10 +3,10 @@ import GameQuestionTimer from './GameQuestionTimer'
 import GameQuestionPlayerContainer from './GameQuestionPlayerContainer'
 import GameQuestionAnswerButton from './GameQuestionAnswerButton'
 
-function GameQuestionContent({gameState, playerId}) {
+function GameQuestionContent({gameState, playerId, stompClient}) {
 	let controls;
 	if(playerId > 0){
-		controls = <GameQuestionAnswerButton gameState={gameState} playerId={playerId} />
+		controls = <GameQuestionAnswerButton gameState={gameState} playerId={playerId} stompClient={stompClient}/>
 	}
     return <>
 		<div>Question {gameState.currentQuestionNum}</div>

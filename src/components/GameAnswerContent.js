@@ -2,15 +2,16 @@ import React from 'react'
 import GameAnswerVideo from './GameAnswerVideo'
 import GameAnswerPlayerContainer from './GameAnswerPlayerContainer'
 import GameAnswerReadyButton from './GameAnswerReadyButton'
+import GameAnswerUnreadyButton from './GameAnswerUnreadyButton'
 
-function GameAnswerContent({gameState, playerId}) {
+function GameAnswerContent({gameState, playerId, stompClient}) {
 
 	let controls;
 	if(playerId > 0){
 		if(gameState.playerList[playerId-1].status === 'unready'){
-			controls = <GameAnswerReadyButton gameState={gameState} playerId={playerId} />
+			controls = <GameAnswerReadyButton gameState={gameState} playerId={playerId} stompClient={stompClient} />
 		} else {
-
+			controls = <GameAnswerUnreadyButton gameState={gameState} playerId={playerId} stompClient={stompClient} />
 		}
 	}
 

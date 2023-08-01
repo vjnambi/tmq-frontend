@@ -3,14 +3,14 @@ import axios from 'axios'
 import BEDomain from '../lib/BEDomain'
 
 
-function GameAnswerReadyButton({gameState, playerId}) {
+function GameAnswerUnreadyButton({gameState, playerId, stompClient}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         const body = {
             "payload": "unready"
         }
-        await axios.post(`${BEDomain}/updatePlayerStatus/${gameState.gameId}/${playerId}`, body)
+        stompClient.send(`/app/updatePlayerStatus/${gameState.gameId}/${playerId}`,{},JSON.stringify(body))
     }
 
     return <>
@@ -20,4 +20,4 @@ function GameAnswerReadyButton({gameState, playerId}) {
     </>
 }
 
-export default GameAnswerReadyButton
+export default GameAnswerUnreadyButton

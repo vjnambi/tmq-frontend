@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import BEDomain from '../lib/BEDomain'
-function GameQuestionAnswerButton({gameState, playerId}) {
+function GameQuestionAnswerButton({gameState, playerId, stompClient}) {
 
     const [formEntry1, setFormEntry1] = useState("")
     
@@ -11,7 +11,7 @@ function GameQuestionAnswerButton({gameState, playerId}) {
             "payload": e.target[0].value
         }
         setFormEntry1("")
-        await axios.post(`${BEDomain}/updatePlayerAnswer/${gameState.gameId}/${playerId}`, body)
+        stompClient.send(`/app/updatePlayerAnswer/${gameState.gameId}/${playerId}`,{},JSON.stringify(body))
     }
 
     return <>

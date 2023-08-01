@@ -64,16 +64,16 @@ function Game() {
     let content;
     switch(gameState.status){
         case "lobby":
-            content = <GameLobbyContent gameState={gameState} setGameState={setGameState} playerId={playerId} setPlayerId={setPlayerId}/>
+            content = <GameLobbyContent gameState={gameState} setGameState={setGameState} playerId={playerId} setPlayerId={setPlayerId} stompClient={stompClient}/>
             break;
         case "question":
-            content =  <GameQuestionContent gameState={gameState} playerId={playerId} />
+            content =  <GameQuestionContent gameState={gameState} playerId={playerId} stompClient={stompClient} />
             break;
         case "answer":
-            content = <GameAnswerContent gameState={gameState} playerId={playerId}/>
+            content = <GameAnswerContent gameState={gameState} playerId={playerId} stompClient={stompClient}/>
             break;
         case "result":
-            content = <GameResultContent gameState={gameState} playerId={playerId} />
+            content = <GameResultContent gameState={gameState} playerId={playerId} stompClient={stompClient} />
             break;
         default:
             content = <div>Game state unknown</div>
