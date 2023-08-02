@@ -8,7 +8,8 @@ function GameQuestionAnswerButton({gameState, playerId, stompClient}) {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const body = {
-            "payload": e.target[0].value
+            "payload": e.target[0].value,
+            "auth": sessionStorage.getItem("accessToken2")
         }
         setFormEntry1("")
         stompClient.send(`/app/updatePlayerAnswer/${gameState.gameId}/${playerId}`,{},JSON.stringify(body))

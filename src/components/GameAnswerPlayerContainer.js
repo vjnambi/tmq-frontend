@@ -12,10 +12,14 @@ function GameAnswerPlayerContainer({gameState, playerId}) {
     temparray2.push(gameState.playerMap[playerId])
     var cursor = 0
     while(temparray2.length < 4){
-        if(temparray[cursor].id !== playerId){
-            temparray2.push(temparray[cursor])
+        if(cursor >= temparray.length){
+            temparray2.push(null)
+        } else{
+            if(temparray[cursor].id !== playerId){
+                temparray2.push(temparray[cursor])
+            }
+            cursor++;
         }
-        cursor++;
     }
     return <div className='vflex' style={{alignItems:'center', gap: '0.1vh', alignSelf: 'stretch', flexGrow: 5, width: 0}}>
             {temparray2.map(

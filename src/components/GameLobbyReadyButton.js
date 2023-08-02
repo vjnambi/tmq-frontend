@@ -8,9 +8,10 @@ function GameLobbyReadyButton({gameState, playerId, stompClient}) {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const body = {
-            "payload": "ready"
+            "payload": "ready",
+            "auth": sessionStorage.getItem("accessToken2")
         }
-        stompClient.send(`/app/updatePlayerStatus/${gameState.gameId}/${playerId}`,{},JSON.stringify(body))
+        stompClient.send(`/app/updatePlayerStatus/${gameState.gameId}/${playerId}`,{"AUTHORIZATION": sessionStorage.getItem("accessToken2")},JSON.stringify(body))
     }
 
     return <>

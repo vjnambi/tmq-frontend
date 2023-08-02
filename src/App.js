@@ -5,7 +5,7 @@ import Home from './pages/Home';
 
 import Game from './pages/Game';
 import { loader as gameLoader } from './pages/Game';
-import ApplePay from './pages/ApplePay';
+import Test from './pages/Test';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import {loader as qsLoader} from './pages/QuestionSets';
@@ -27,8 +27,8 @@ function App() {
       element: <Home />,
     },
     {
-      path: '/apple',
-      element: <ApplePay />
+      path: '/test',
+      element: <Test />
     },
     {
       path: '/register',
