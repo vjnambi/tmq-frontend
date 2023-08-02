@@ -21,7 +21,10 @@ export async function loader({params}){
 
 function Game() {
 
+
     const {gameData, gameId} = useLoaderData()
+
+    console.log(gameData)
 
     const [gameState, setGameState] = useState(gameData)
 

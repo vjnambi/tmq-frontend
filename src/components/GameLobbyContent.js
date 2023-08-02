@@ -16,11 +16,9 @@ function GameLobbyContent({gameState, setGameState, playerId, setPlayerId, stomp
 
     if(lobbyView === 0){
         if(playerId < 0){
-            if(!gameState.playerList[3]){
-                controls = <GameLobbyJoinGameButton gameState={gameState} setGameState={setGameState} setPlayerId={setPlayerId} />
-            }
+            controls = <GameLobbyJoinGameButton gameState={gameState} setGameState={setGameState} setPlayerId={setPlayerId} />
         } else {
-            if(gameState.playerList[playerId-1].status === 'unready'){
+            if(gameState.playerMap[playerId].status === 'unready'){
                 if(gameState.questionPool.length === 0){
                     controls = <GameLobbyView1Button setLobbyView={setLobbyView} />
                 } else {

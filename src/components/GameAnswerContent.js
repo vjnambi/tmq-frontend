@@ -8,7 +8,7 @@ function GameAnswerContent({gameState, playerId, stompClient}) {
 
 	let controls;
 	if(playerId > 0){
-		if(gameState.playerList[playerId-1].status === 'unready'){
+		if(gameState.playerMap[playerId].status === 'unready'){
 			controls = <GameAnswerReadyButton gameState={gameState} playerId={playerId} stompClient={stompClient} />
 		} else {
 			controls = <GameAnswerUnreadyButton gameState={gameState} playerId={playerId} stompClient={stompClient} />
@@ -19,7 +19,7 @@ function GameAnswerContent({gameState, playerId, stompClient}) {
 		<div>Question {gameState.currentQuestionNum}</div>
 		<div className='hflex' style={{alignSelf: 'stretch', alignItems: 'stretch', gap: '0.2vw'}}>
 			<GameAnswerVideo gameState={gameState} />
-			<GameAnswerPlayerContainer gameState={gameState} />
+			<GameAnswerPlayerContainer gameState={gameState} playerId={playerId} />
 		</div>
 		<div>{gameState.currentQuestion.answer}</div>
 		{controls}
