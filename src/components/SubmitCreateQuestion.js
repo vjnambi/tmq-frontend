@@ -13,6 +13,10 @@ function SubmitCreateQuestion({setQState, qsId}) {
         var videoId = "";
         videoId = e.target[0].value;
         videoId = videoId.match("v=(.)*")[0].substring(2)
+        var andIndex = videoId.indexOf("&")
+        if(andIndex >= 0){
+            videoId = videoId.substring(0,andIndex)
+        }
         const body = {
             "url": videoId,
             "answer": e.target[1].value

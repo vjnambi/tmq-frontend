@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
 
-import axios from 'axios';
-import BEDomain from '../lib/BEDomain';
-
 function GameLobbyAddQuestion({gameState, playerId, stompClient}) {
 
     const [formEntry1, setFormEntry1] = useState("")
@@ -17,6 +14,10 @@ function GameLobbyAddQuestion({gameState, playerId, stompClient}) {
         var videoId = "";
         videoId = e.target[0].value;
         videoId = videoId.match("v=(.)*")[0].substring(2)
+        var andIndex = videoId.indexOf("&")
+        if(andIndex >= 0){
+            videoId = videoId.substring(0,andIndex)
+        }
         const body = {
             "payload": [
                 {
