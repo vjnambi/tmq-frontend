@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
-import axios from 'axios'
-import BEDomain from '../lib/BEDomain'
+
 function GameQuestionAnswerButton({gameState, playerId, stompClient}) {
 
     const [formEntry1, setFormEntry1] = useState("")

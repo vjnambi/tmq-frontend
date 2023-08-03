@@ -1,6 +1,4 @@
 import React from 'react'
-import axios from 'axios'
-import BEDomain from '../lib/BEDomain'
 
 
 function GameLobbyReadyButton({gameState, playerId, stompClient}) {
