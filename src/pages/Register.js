@@ -9,12 +9,14 @@ export default function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const body = {
-            "username": e.target[0].value,
-            "password": e.target[1].value
-        }
+        if(e.target[0].value.trim() !== "" && e.target[1].value.trim() !== ""){
+            const body = {
+                "username": e.target[0].value,
+                "password": e.target[1].value
+            }
 
-        setText((await axios.post(`${BE2Domain}/register`, body)).data)
+            setText((await axios.post(`${BE2Domain}/register`, body)).data)
+        }
     }
 
     return <>
