@@ -24,7 +24,7 @@ function GameAnswerPlayerContainer({gameState, playerId}) {
     return <div className='vflex' style={{alignItems:'center', gap: '0.1vh', alignSelf: 'stretch', flexGrow: 5, width: 0}}>
             {temparray2.map(
                 (n, i) => {
-                    return <GameAnswerPlayerItem key={i} playerState={n} />
+                    return <GameAnswerPlayerItem key={i} playerState={n} gameState={gameState} />
                 }
             )}
     </div>

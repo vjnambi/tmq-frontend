@@ -2,7 +2,7 @@ import React from 'react'
 import logo from '../logo192.png'
 
 
-function GameAnswerPlayerItem({playerState}) {
+function GameAnswerPlayerItem({playerState, gameState}) {
     if(playerState){
         return <div className='card' style={{width: '100%', height: '0', flexGrow: 1, order: `${-1*playerState.score}`}}>
                 <div className='card-body' style={{padding: '0.5vh', height: '100%'}}>
@@ -15,7 +15,7 @@ function GameAnswerPlayerItem({playerState}) {
                             </div>
                             <div className='hflex'>
                                 <div style={{flexGrow: 1, textAlign: 'left', paddingRight: '0.8vw'}}>Answer: {playerState.answer}</div>
-                                <div style={{flexGrow: 1, textAlign: 'right'}}>{playerState.status}</div>
+                                <div style={{flexGrow: 1, textAlign: 'right'}}>{playerState.status === "ready"?"ready":(playerState.answer === gameState.currentQuestion.answer?"correct":"incorrect")}</div>
                             </div>
                         </div>
                         
