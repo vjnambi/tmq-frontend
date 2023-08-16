@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 import axios from 'axios';
 import BE2Domain from '../lib/BE2Domain'
-import BEDomain from '../lib/BEDomain';
 
 
 function GameLobbySearch({gameState, playerId, stompClient}) {
