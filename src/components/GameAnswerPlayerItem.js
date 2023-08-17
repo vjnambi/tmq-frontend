@@ -15,7 +15,7 @@ function GameAnswerPlayerItem({playerState, gameState}) {
                             </div>
                             <div className='hflex'>
                                 <div style={{flexGrow: 1, textAlign: 'left', paddingRight: '0.8vw'}}>Answer: {playerState.answer}</div>
-                                <div style={{flexGrow: 1, textAlign: 'right'}}>{playerState.status === "ready"?"ready":(playerState.answer === gameState.currentQuestion.answer?"correct":"incorrect")}</div>
+                                <div style={{flexGrow: 1, textAlign: 'right'}}>{playerState.status === "ready"?"ready":(playerState.answer.toLowerCase() === gameState.currentQuestion.answer.toLowerCase()?"correct":"incorrect")}</div>
                             </div>
                         </div>
                         
