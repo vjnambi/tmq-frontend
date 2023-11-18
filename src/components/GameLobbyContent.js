@@ -7,6 +7,7 @@ import GameLobbyUnreadyButton from './GameLobbyUnreadyButton';
 import GameLobbyView0Button from './GameLobbyView0Button';
 import GameLobbyAddQuestion from './GameLobbyAddQuestion';
 import GameLobbySearch from './GameLobbySearch';
+import GameLobbyLink from './GameLobbyLink';
 
 function GameLobbyContent({gameState, setGameState, playerId, setPlayerId, stompClient}) {
 
@@ -16,13 +17,20 @@ function GameLobbyContent({gameState, setGameState, playerId, setPlayerId, stomp
 
     if(lobbyView === 0){
         if(playerId < 0){
-            controls = <GameLobbyJoinGameButton gameState={gameState} setGameState={setGameState} setPlayerId={setPlayerId} />
+            controls = <>
+            <GameLobbyLink gameState={gameState}/>
+            <GameLobbyJoinGameButton gameState={gameState} setGameState={setGameState} setPlayerId={setPlayerId} />
+            </>
         } else {
             if(gameState.playerMap[playerId].status === 'unready'){
                 if(gameState.questionPool.length === 0){
-                    controls = <GameLobbyView1Button setLobbyView={setLobbyView} />
+                    controls = <>
+                    <GameLobbyLink gameState={gameState}/>
+                    <GameLobbyView1Button setLobbyView={setLobbyView} />
+                    </>
                 } else {
                     controls = <>
+                        <GameLobbyLink gameState={gameState}/>
                         <GameLobbyView1Button setLobbyView={setLobbyView} />
                         <GameLobbyReadyButton gameState={gameState} playerId={playerId} stompClient={stompClient} />
                     </>
